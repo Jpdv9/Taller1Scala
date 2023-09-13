@@ -25,18 +25,16 @@ package object FuncionesRecursivas {
   }
 
   def k_elem(l:List[Int], k: Int): Int ={
-    if(l.isEmpty) 0
-    else{
-      if(k < 0 || k >= tamI(l)) 0
-      else l(k)
-    }
+    if(l.isEmpty || k <= 0 ) 0
+    else if(k == 1) l.head
+    else k_elem(l.tail, k - 1)
   }
 
 
   def ordenar(l:List[Int]): List[Int] = {
     if (l.isEmpty) Nil
-    else {
+    else
       ordenar(menoresQue(l.tail, l.head)) ++ List(l.head) ++ ordenar(noMenoresQue(l.tail, l.head))
-    }
+
   }
 }
